@@ -1,0 +1,89 @@
+# Linux commands - Basic to Advanced
+linux_commands = """
+# Basic Commands
+pwd
+ls
+cd
+mkdir
+touch
+cp
+mv
+rm
+cat
+echo
+history
+clear
+man
+
+# Intermediate Commands
+chmod
+chown
+find
+grep
+sort
+head
+tail
+diff
+tar
+zip
+unzip
+wget
+curl
+
+# Advanced Commands
+ps
+top
+kill
+df
+du
+free
+ln
+iptables
+systemctl
+cron
+awk
+sed
+ssh
+rsync
+docker
+kubernetes
+"""
+
+# Git commands - Basic to Advanced
+git_commands = """
+# Basic Commands
+git init
+git clone
+git add
+git commit
+git status
+git log
+git branch
+git checkout
+git merge
+
+# Intermediate Commands
+git remote
+git push
+git pull
+git fetch
+git rebase
+git stash
+git reset
+git diff
+git tag
+git show
+
+# Advanced Commands
+git cherry-pick
+git reflog
+git bisect
+git subtree
+git clean
+git blame
+git archive
+git shortlog
+git revert
+git sparse-checkout
+"""
+
