@@ -1,0 +1,19 @@
+Data Types:
+
+int: Integer numbers (e.g., 10, -5)
+float: Decimal numbers (e.g., 3.14, 0.001)
+str: Text strings (e.g., "Hello, world!")
+bool: Boolean values, either True or False
+list: Ordered and mutable collection (e.g., [1, 2, 3])
+tuple: Ordered but immutable collection (e.g., (1, 2, 3))
+dict: Key-value pairs, useful for mapping data (e.g., {"name": "DevOps", "age": 25})
+Functions: Blocks of reusable code to perform a specific task. For example:
+
+python
+Copy code
+def greet():
+    print("Hello, DevOps Engineer!")
+Control Structures: Tools for managing the flow of code.
+
+if-else: Decision making
+for and while loops: Repeating actions
