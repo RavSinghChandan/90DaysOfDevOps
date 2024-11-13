@@ -1,0 +1,45 @@
+#!/bin/bash
+
+# Clone the repository
+git clone https://github.com/LondheShubham153/Springboot-BankApp.git
+cd Springboot-BankApp
+
+# Build the Spring Boot application using Maven
+echo "Building the application with Maven..."
+mvn clean package
+
+# Create Dockerfile
+cat <<EOF > Dockerfile
+# Use an official OpenJDK image as the base
+FROM openjdk:17-jdk-alpine
+
+# Set a working directory
+WORKDIR /app
+
+# Copy the project’s jar file to the working directory
+COPY target/Springboot-BankApp-0.0.1-SNAPSHOT.jar app.jar
+
+# Expose the port the application runs on
+EXPOSE 8080
+
+# Command to run the application
+ENTRYPOINT ["java", "-jar", "app.jar"]
+EOF
+
+# Build the Docker image
+echo "Building Docker image..."
+docker build -t londheshubham153/springboot-bankapp:latest .
+
+# Run the Docker container to test locally
+echo "Running Docker container locally on port 8080..."
+docker run -d -p 8080:8080 londheshubham153/springboot-bankapp:latest
+
+# Log in to Docker Hub (ensure credentials are available or set up for login)
+echo "Logging in to Docker Hub..."
+docker login
+
+# Push the Docker image to Docker Hub
+echo "Pushing Docker image to Docker Hub..."
+docker push londheshubham153/springboot-bankapp:latest
+
+echo "Docker image pushed successfully! Access it at Docker Hub."
