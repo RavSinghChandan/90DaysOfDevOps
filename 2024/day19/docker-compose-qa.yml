@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  app1:
+    image: alpine
+    command: >
+      sh -c "echo 'Hello from App 1' > /shared-data/message.txt && tail -f /dev/null"
+    volumes:
+      - shared-data:/shared-data
+
+  app2:
+    image: alpine
+    command: >
+      sh -c "sleep 5 && cat /shared-data/message.txt && tail -f /dev/null"
+    volumes:
+      - shared-data:/shared-data
+
+volumes:
+  shared-data:
