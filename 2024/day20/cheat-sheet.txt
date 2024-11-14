@@ -1,0 +1,92 @@
+# Create a Docker cheat sheet text file with essential and advanced commands
+cheat_sheet_content = """
+Docker Cheat Sheet
+
+# Docker Basics
+docker --version                     # Show Docker version
+docker info                          # Display system-wide information
+docker help                          # Get help with Docker commands
+
+# Working with Images
+docker images                        # List all images
+docker pull <image_name>             # Download an image from Docker Hub
+docker build -t <tag_name> .         # Build an image from Dockerfile
+docker rmi <image_name>              # Remove an image
+
+# Managing Containers
+docker ps                            # List all running containers
+docker ps -a                         # List all containers, including stopped
+docker run -d <image_name>           # Run a container in detached mode
+docker run -it <image_name>          # Run container in interactive mode
+docker stop <container_id>           # Stop a running container
+docker start <container_id>          # Start a stopped container
+docker restart <container_id>        # Restart a container
+docker rm <container_id>             # Remove a container
+docker logs <container_id>           # View container logs
+docker exec -it <container_id> bash  # Enter a running container
+
+# Docker Networking
+docker network ls                    # List all networks
+docker network create <network_name> # Create a new network
+docker network connect <network> <container>  # Connect a container to a network
+docker network disconnect <network> <container> # Disconnect container from network
+
+# Docker Volumes
+docker volume ls                     # List all volumes
+docker volume create <volume_name>   # Create a new volume
+docker run -v <volume_name>:<path> <image> # Mount a volume to a container
+docker volume rm <volume_name>       # Remove a volume
+
+# Docker Compose
+docker-compose up                    # Start all services in docker-compose.yml
+docker-compose down                  # Stop and remove services defined in compose
+docker-compose build                 # Build or rebuild services
+docker-compose ps                    # List containers in Compose project
+docker-compose logs                  # Show logs for services
+docker-compose exec <service> <command>  # Run a command in a specific service
+
+# Dockerfile Instructions
+FROM <base_image>                    # Set base image
+RUN <command>                        # Execute command in image build
+COPY <src> <dest>                    # Copy files from host to image
+ADD <src> <dest>                     # Copy files or download URLs to image
+CMD ["<command>", "<arg1>"]          # Default command to run in container
+ENTRYPOINT ["<command>", "<arg1>"]   # Command always run in container
+
+# Container Lifecycle Management
+docker commit <container_id> <new_image_name>  # Save changes to a new image
+docker tag <image_id> <new_name>               # Tag an image with a new name
+docker push <image_name>                       # Push an image to Docker Hub
+docker inspect <container_id>                  # View details of a container/image
+docker diff <container_id>                     # Show changes to container files
+
+# Cleaning Up
+docker system prune                            # Remove unused data
+docker container prune                         # Remove stopped containers
+docker image prune                             # Remove unused images
+docker volume prune                            # Remove unused volumes
+
+# Docker Swarm (Orchestration)
+docker swarm init                              # Initialize Docker Swarm
+docker swarm join --token <token> <manager_ip> # Join a Swarm as a worker
+docker node ls                                 # List nodes in Swarm
+docker service create --name <service_name> <image> # Create a new service
+docker service ls                              # List services in Swarm
+docker stack deploy -c <compose-file> <stack_name>  # Deploy a stack
+
+# Helpful Docker Tips
+docker top <container_id>                      # Display processes in a container
+docker stats                                   # Show resource usage of containers
+docker history <image_id>                      # View image layers history
+docker save -o <file_name>.tar <image_name>    # Save image to a tar file
+docker load -i <file_name>.tar                 # Load an image from a tar file
+"""
+
+# Define the file path
+file_path = '/mnt/data/docker_cheat_sheet.txt'
+
+# Write the cheat sheet content to the text file
+with open(file_path, 'w') as file:
+    file.write(cheat_sheet_content)
+
+file_path
