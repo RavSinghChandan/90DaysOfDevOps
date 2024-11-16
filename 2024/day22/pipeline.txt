@@ -1,0 +1,25 @@
+# Creating a text file for the Jenkins Freestyle Pipeline script
+pipeline_steps = """
+### Jenkins Freestyle Pipeline Script
+
+#### Step 1: Print "Hello World"
+echo "Hello World"
+
+#### Step 2: Print the Current Date and Time
+echo "Current Date and Time: $(date)"
+
+#### Step 3: Clone a GitHub Repository and List Its Contents
+git clone https://github.com/YourUsername/YourRepository.git
+echo "Contents of the Repository:"
+ls -l YourRepository
+
+#### Configure Periodic Scheduling
+Cron Expression for Running Every Hour: H * * * *
+"""
+
+# Save the script into a text file
+file_path = "/mnt/data/Jenkins_Freestyle_Pipeline.txt"
+with open(file_path, "w") as file:
+    file.write(pipeline_steps)
+
+file_path
