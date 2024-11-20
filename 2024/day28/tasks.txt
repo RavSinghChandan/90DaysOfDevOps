@@ -1,0 +1,37 @@
+
+# Commands for Jenkins Master-Agent Setup
+
+## On the Agent Node (Ubuntu 22.04):
+
+# 1. Update and install Java (ensure the version matches the Jenkins master):
+sudo apt update
+sudo apt install openjdk-11-jdk -y
+java -version
+
+# 2. Create a user for Jenkins:
+sudo useradd -m -d /home/jenkins-agent -s /bin/bash jenkins
+sudo passwd jenkins
+
+# 3. Set up SSH keys for the Jenkins master:
+su - jenkins
+ssh-keygen -t rsa -b 2048
+
+# Copy the public key (~/.ssh/id_rsa.pub) to the Jenkins master credentials.
+
+# 4. Install Docker (if required for job execution):
+sudo apt install docker.io -y
+sudo usermod -aG docker jenkins
+
+# 5. Verify SSH connectivity from the master:
+ssh jenkins@<agent-ip>
+
+## On the Master Node (Jenkins UI):
+# 1. Create a New Node:
+#    - Go to Manage Jenkins → Manage Nodes and Clouds → New Node.
+#    - Provide the necessary details:
+#      * Remote root directory: /home/jenkins-agent
+#      * Labels: agent1
+#      * Launch method: Launch agents via SSH
+#      * Add SSH credentials (private key).
+
+# Verify the agent is online in the "Nodes" section.
