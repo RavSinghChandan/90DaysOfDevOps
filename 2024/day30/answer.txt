@@ -1,0 +1,51 @@
+1️⃣ What is Kubernetes? Write in your own words and why do we call it K8s?
+Kubernetes is an open-source container orchestration platform that automates the deployment, scaling, and management of containerized applications. It helps you manage applications running in containers across a cluster of machines, providing tools for maintaining high availability, scaling, and ensuring workloads are running as expected.
+
+We call it K8s because the word Kubernetes has 8 letters between the "K" and the "s". It’s a convenient abbreviation and is commonly used in the industry.
+
+2️⃣ What are the benefits of using K8s?
+Scalability: Kubernetes can scale applications automatically based on usage, without manual intervention.
+High Availability: It automatically restarts failed containers, reschedules them when nodes die, and ensures the application stays up.
+Efficient Resource Utilization: Kubernetes schedules containers to run on nodes with available resources, making the most out of hardware resources.
+Self-Healing: Kubernetes automatically replaces and reschedules containers if a container or node fails.
+Load Balancing: It distributes the traffic across containers to ensure even workload distribution.
+Declarative Configuration: You define your desired state for applications, and Kubernetes ensures the system matches that state.
+3️⃣ Explain the architecture of Kubernetes.
+Kubernetes follows a master-slave architecture with two main components:
+
+Control Plane (Master Node): Manages the overall state of the cluster, making global decisions about the cluster (e.g., scheduling, monitoring, scaling).
+Worker Nodes (Node): These run the application workloads. Each worker node hosts a set of containers, controlled by the control plane.
+The Kubernetes control plane consists of the following components:
+
+API Server: Exposes the Kubernetes API and serves as the interface to interact with the cluster.
+Scheduler: Assigns tasks (pods) to worker nodes based on resource availability.
+Controller Manager: Handles controllers that manage the lifecycle of resources.
+etcd: A consistent and highly-available key-value store that holds all cluster data, such as configurations and state.
+Each worker node contains:
+
+Kubelet: An agent that ensures containers are running in the pod and reports the status to the control plane.
+Container Runtime: Software responsible for running containers, like Docker.
+Kube Proxy: Manages networking, enabling services to be accessed by external users.
+4️⃣ What is Control Plane?
+The Control Plane is the brain of the Kubernetes cluster. It makes decisions about the cluster, such as scheduling applications, maintaining the cluster's desired state, and responding to events (e.g., starting or stopping containers).
+
+The control plane includes:
+
+API Server
+Scheduler
+Controller Manager
+etcd
+5️⃣ Write the difference between kubectl and kubelets.
+kubectl: kubectl is the command-line tool used to interact with the Kubernetes cluster. It allows users to control and manage Kubernetes resources, such as deploying applications, viewing logs, and scaling resources.
+
+Example: kubectl get pods, kubectl apply -f deployment.yaml
+Kubelet: The kubelet is an agent that runs on each worker node in the cluster. It ensures the containers are running in the pods, and reports their health and status back to the control plane.
+
+Example: The kubelet is responsible for ensuring that containers described in a PodSpec are running and healthy.
+6️⃣ Explain the role of the API server.
+The API Server in Kubernetes is the central management point for the cluster. It exposes the Kubernetes API, allowing users and components to interact with the cluster. The API server:
+
+Serves as the gateway to the Kubernetes control plane.
+Receives commands from kubectl, controller managers, and other components.
+Handles requests from clients, validates and processes them, and then updates the cluster state in etcd.
+Ensures communication between different Kubernetes components (e.g., Scheduler, Controller Manager, Kubelets).
