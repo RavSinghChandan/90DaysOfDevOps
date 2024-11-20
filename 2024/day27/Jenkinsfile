@@ -1,0 +1,24 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Build Docker Image') {
+            steps {
+                echo 'Building Docker Image...'
+                sh 'docker build -t trainwithshubham/django-app:latest .'
+            }
+        }
+
+        stage('Run Docker Container') {
+            steps {
+                echo 'Running Docker Container...'
+                sh '''
+                if [ $(docker ps -aq -f name=django-app-container) ]; then
+                    docker rm -f django-app-container
+                fi
+                docker run -d --name django-app-container trainwithshubham/django-app:latest
+                '''
+            }
+        }
+    }
+}

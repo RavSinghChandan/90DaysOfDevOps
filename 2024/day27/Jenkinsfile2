@@ -1,0 +1,19 @@
+pipeline {
+    agent {
+        docker { image 'trainwithshubham/django-app:latest' }
+    }
+
+    stages {
+        stage('Build and Run') {
+            steps {
+                script {
+                    echo 'Building Docker Image...'
+                    def appImage = docker.build("trainwithshubham/django-app:latest")
+
+                    echo 'Running Docker Container...'
+                    appImage.run('--name django-app-container')
+                }
+            }
+        }
+    }
+}
