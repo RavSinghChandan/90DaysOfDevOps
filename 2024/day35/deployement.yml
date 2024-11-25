@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-deployment
+  namespace: your-namespace
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: app-label
+  template:
+    metadata:
+      labels:
+        app: app-label
+    spec:
+      containers:
+        - name: app-container
+          image: nginx:latest
+          ports:
+            - containerPort: 80
+          envFrom:
+            - secretRef:
+                name: app-secret
