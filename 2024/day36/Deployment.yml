@@ -1,9 +1,10 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: todo-app-deployment
+  name: todo-app
+  namespace: your-namespace
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: todo-app
@@ -13,14 +14,14 @@ spec:
         app: todo-app
     spec:
       containers:
-        - name: todo-app
-          image: rishikeshops/todo-app
+        - name: todo-container
+          image: nginx:latest
           ports:
-            - containerPort: 8000
+            - containerPort: 80
           volumeMounts:
-            - name: todo-app-data
-              mountPath: /app
+            - name: todo-storage
+              mountPath: /usr/share/nginx/html
       volumes:
-        - name: todo-app-data
+        - name: todo-storage
           persistentVolumeClaim:
-            claimName: pvc-todo-app
+            claimName: todo-pvc
