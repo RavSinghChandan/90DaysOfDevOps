@@ -1,0 +1,32 @@
+Day 60 - Terraform Task Solutions
+
+Why do we use Terraform?
+
+Terraform is used to automate the provisioning, management, and de-provisioning of infrastructure. It allows teams to define infrastructure as code, enabling repeatability, scalability, and version control of resources across different cloud providers and environments.
+
+What is Infrastructure as Code (IaC)?
+
+Infrastructure as Code (IaC) is the practice of managing and provisioning infrastructure using code rather than manual processes. This approach ensures consistency, reduces errors, and allows teams to version and automate infrastructure configurations.
+
+What is a Resource?
+
+A resource in Terraform is a single component of your infrastructure, such as a virtual machine, database, or network. It is defined in a configuration file and provisioned when the Terraform configuration is applied.
+
+What is a Provider?
+
+A provider in Terraform is a plugin that allows Terraform to interact with APIs of cloud platforms and other services. Examples include AWS, Azure, Google Cloud, and Kubernetes providers.
+
+What is a State file in Terraform? What’s the importance of it?
+
+The state file (terraform.tfstate) stores information about the infrastructure managed by Terraform. It tracks the current state of resources to determine what changes are required. The state file is critical for operations like updates and scaling and ensures that Terraform understands the actual infrastructure setup.
+
+What is Desired and Current State?
+
+Desired State: The infrastructure configuration defined in Terraform's configuration files.
+
+Current State: The actual state of the infrastructure as recorded in the state file.
+
+Terraform works to reconcile the current state with the desired state by applying changes to bring them into alignment.
+
+Happy Learning!
+
