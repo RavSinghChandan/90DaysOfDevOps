@@ -1,0 +1,100 @@
+Solution: Hosting a Static Website on AWS S3
+
+Step 1: Create an S3 Bucket
+
+Log in to AWS Console: Go to the AWS Management Console.
+
+Navigate to S3: In the search bar, type S3 and select it.
+
+Create Bucket:
+
+Click on Create bucket.
+
+Provide a unique name for your bucket (e.g., my-static-website-bucket).
+
+Choose the AWS Region closest to your audience.
+
+Uncheck Block all public access (required for public access to the website).
+
+Acknowledge the risks by ticking the checkbox and click Create bucket.
+
+Step 2: Upload Website Files
+
+Select the bucket you just created.
+
+Click on the Upload button.
+
+Add your website files (e.g., index.html, style.css).
+
+Click Upload to complete the process.
+
+Step 3: Configure Bucket for Static Website Hosting
+
+Go to the Properties tab of the bucket.
+
+Scroll down to Static website hosting and click Edit.
+
+Select Enable.
+
+Provide the index.html as the index document.
+
+(Optional) Add an error document (e.g., error.html).
+
+Save changes.
+
+Step 4: Set Bucket Permissions
+
+Go to the Permissions tab of the bucket.
+
+Scroll to Bucket policy and click Edit.
+
+Add the following bucket policy to allow public access:
+
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": "*",
+      "Action": "s3:GetObject",
+      "Resource": "arn:aws:s3:::my-static-website-bucket/*"
+    }
+  ]
+}
+
+Replace my-static-website-bucket with your actual bucket name.
+
+Save the policy.
+
+Step 5: Test Your Website
+
+Go back to the Properties tab and copy the Bucket website endpoint URL.
+
+Paste the URL into your browser.
+
+Verify that your website loads correctly.
+
+Step 6: (Optional) Use a Custom Domain
+
+Register a domain using a domain registrar or AWS Route 53.
+
+Create a CNAME record in your domain’s DNS settings that points to the S3 bucket's website endpoint.
+
+Verify the domain is correctly pointing to your S3 bucket.
+
+Step 7: Verify the Configuration
+
+Test the website with both the S3 endpoint URL and the custom domain (if configured).
+
+Ensure all links, styles, and assets are loading correctly.
+
+Notes:
+
+Ensure the bucket name is globally unique if using the default S3 endpoint.
+
+Always validate permissions to avoid exposing sensitive data.
+
+Use CloudFront for added security, performance, and SSL support.
+
+By following these steps, you have successfully hosted a static website on AWS S3. Enjoy your scalable, cost-effective solution!
+
